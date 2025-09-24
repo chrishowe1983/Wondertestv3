@@ -1,0 +1,693 @@
+{
+  "application": {
+    "name": "WonderList - FEEL Pages",
+    "description": "Emotion-themed landing pages for positive habits, modules, and routines",
+    "type": "multi-page-application",
+    "framework": "react-typescript",
+    "styling": "tailwindcss-v4"
+  },
+  "theme": {
+    "colors": {
+      "primary": {
+        "navy": "#030F38",
+        "green": "#57C289", 
+        "coral": "#F05959",
+        "blue": "#0F73FF"
+      },
+      "system": {
+        "background": "#ffffff",
+        "foreground": "#030213",
+        "muted": "#ececf0",
+        "muted-foreground": "#717182",
+        "border": "rgba(0, 0, 0, 0.1)",
+        "gray-50": "#f9fafb",
+        "gray-100": "#f3f4f6",
+        "gray-200": "#e5e7eb",
+        "gray-600": "#4b5563",
+        "gray-700": "#374151",
+        "gray-800": "#1f2937",
+        "gray-900": "#111827"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "primary": "Poppins, sans-serif",
+        "decorative": ["Kalam", "Caveat", "Dancing Script"]
+      },
+      "fontSize": {
+        "base": "16px",
+        "sm": "14px",
+        "lg": "18px",
+        "xl": "20px",
+        "2xl": "24px",
+        "3xl": "30px"
+      },
+      "fontWeight": {
+        "normal": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      }
+    },
+    "spacing": {
+      "radius": "0.625rem",
+      "container": "max-w-7xl",
+      "sidebar-width": "320px",
+      "mobile-nav-height": "64px"
+    }
+  },
+  "layout": {
+    "structure": "split-screen-with-navigation",
+    "responsive": true,
+    "breakpoints": {
+      "mobile": "< 768px",
+      "tablet": "768px - 1024px", 
+      "desktop": "> 1024px"
+    },
+    "container": {
+      "className": "min-h-screen bg-gray-200 md:p-8",
+      "children": [
+        {
+          "component": "MobileNavigation",
+          "visible": "mobile-only"
+        },
+        {
+          "component": "HoverNavigation", 
+          "visible": "desktop-only"
+        },
+        {
+          "component": "MainContentArea"
+        }
+      ]
+    }
+  },
+  "navigation": {
+    "mobile": {
+      "type": "bottom-navigation",
+      "position": "fixed",
+      "height": "64px",
+      "background": "white",
+      "shadow": "lg",
+      "items": [
+        {
+          "label": "Home",
+          "icon": "Home",
+          "route": "home"
+        },
+        {
+          "label": "Ready", 
+          "icon": "CheckCircle",
+          "route": "ready"
+        },
+        {
+          "label": "Excited",
+          "icon": "Zap", 
+          "route": "excited"
+        },
+        {
+          "label": "Confident",
+          "icon": "TrendingUp",
+          "route": "confident"
+        }
+      ]
+    },
+    "desktop": {
+      "type": "hover-sidebar",
+      "position": "left",
+      "width": "80px",
+      "expandedWidth": "320px",
+      "background": "white",
+      "shadow": "lg",
+      "sections": [
+        {
+          "type": "logo",
+          "content": "WonderList"
+        },
+        {
+          "type": "main-navigation",
+          "items": [
+            {
+              "label": "Home",
+              "icon": "Home",
+              "route": "home"
+            },
+            {
+              "label": "All Emotions",
+              "icon": "Grid3X3",
+              "route": "all-emotions"
+            }
+          ]
+        },
+        {
+          "type": "emotions-section",
+          "items": [
+            {
+              "label": "Ready",
+              "description": "Organized & Prepared",
+              "color": "#57C289",
+              "icon": "CheckCircle",
+              "route": "ready"
+            },
+            {
+              "label": "Excited", 
+              "description": "Creative & Energized",
+              "color": "#F05959",
+              "icon": "Zap",
+              "route": "excited"
+            },
+            {
+              "label": "Confident",
+              "description": "Focused & Determined", 
+              "color": "#0F73FF",
+              "icon": "TrendingUp",
+              "route": "confident"
+            }
+          ]
+        },
+        {
+          "type": "recent-modules",
+          "title": "Recent",
+          "maxItems": 3
+        }
+      ]
+    }
+  },
+  "pages": {
+    "home": {
+      "type": "landing",
+      "layout": "hero-with-features",
+      "sections": [
+        {
+          "type": "hero",
+          "background": "gradient-to-br from-purple-50 to-blue-50",
+          "content": {
+            "headline": "Transform How You Feel",
+            "subheadline": "Discover personalized modules for every emotional state",
+            "cta": {
+              "text": "Explore FEEL Pages",
+              "style": "primary",
+              "action": "navigate-to-all-emotions"
+            }
+          }
+        },
+        {
+          "type": "featured-emotions",
+          "layout": "three-column-grid",
+          "items": [
+            {
+              "emotion": "Ready",
+              "color": "#57C289",
+              "description": "Get organized and prepared"
+            },
+            {
+              "emotion": "Excited", 
+              "color": "#F05959",
+              "description": "Channel creativity and energy"
+            },
+            {
+              "emotion": "Confident",
+              "color": "#0F73FF", 
+              "description": "Build focus and determination"
+            }
+          ]
+        }
+      ]
+    },
+    "all-emotions": {
+      "type": "overview",
+      "layout": "grid-with-sidebar",
+      "sidebar": {
+        "background": "#030F38",
+        "textColor": "white",
+        "content": {
+          "title": "All Emotions",
+          "description": "Choose your current feeling"
+        }
+      },
+      "content": {
+        "grid": {
+          "columns": 3,
+          "gap": "24px",
+          "items": "emotion-cards"
+        }
+      }
+    },
+    "ready": {
+      "type": "emotion-page",
+      "theme": {
+        "primaryColor": "#57C289",
+        "sidebarBackground": "#030F38"
+      },
+      "layout": "split-screen",
+      "sidebar": {
+        "width": "320px",
+        "background": "#030F38",
+        "textColor": "white",
+        "content": {
+          "logo": "WonderList",
+          "title": "Ready",
+          "subtitle": "Organized & Prepared",
+          "description": "Transform scattered thoughts into structured action",
+          "navigation": [
+            {
+              "label": "Back to Home",
+              "icon": "Home"
+            },
+            {
+              "label": "All Emotions", 
+              "icon": "Grid3X3"
+            }
+          ]
+        }
+      },
+      "content": {
+        "framework": "spark-shape-start",
+        "modules": [
+          {
+            "phase": "spark",
+            "title": "Home/Household Lists",
+            "description": "Organize your living space",
+            "icon": "Home",
+            "color": "#57C289"
+          },
+          {
+            "phase": "shape", 
+            "title": "Meals/KitchenSync",
+            "description": "Plan your nutrition",
+            "icon": "ChefHat",
+            "color": "#57C289"
+          },
+          {
+            "phase": "start",
+            "title": "School/SchoolSync", 
+            "description": "Academic organization",
+            "icon": "GraduationCap",
+            "color": "#57C289"
+          }
+        ]
+      }
+    },
+    "excited": {
+      "type": "emotion-page",
+      "theme": {
+        "primaryColor": "#F05959",
+        "sidebarBackground": "#030F38"
+      },
+      "layout": "split-screen",
+      "sidebar": {
+        "width": "320px",
+        "background": "#030F38", 
+        "textColor": "white",
+        "content": {
+          "logo": "WonderList",
+          "title": "Excited",
+          "subtitle": "Creative & Energized",
+          "description": "Channel your enthusiasm into creative projects",
+          "navigation": [
+            {
+              "label": "Back to Home",
+              "icon": "Home"
+            },
+            {
+              "label": "All Emotions",
+              "icon": "Grid3X3"
+            }
+          ]
+        }
+      },
+      "content": {
+        "framework": "spark-shape-start",
+        "modules": [
+          {
+            "phase": "spark",
+            "title": "Christmas/Listmas",
+            "description": "Festive planning and joy",
+            "icon": "Gift",
+            "color": "#F05959",
+            "subPages": [
+              "christmas-spark",
+              "christmas-shape", 
+              "christmas-start"
+            ]
+          },
+          {
+            "phase": "shape",
+            "title": "Babies/BabyPrep",
+            "description": "Prepare for new arrivals", 
+            "icon": "Baby",
+            "color": "#F05959"
+          }
+        ]
+      }
+    },
+    "confident": {
+      "type": "emotion-page", 
+      "theme": {
+        "primaryColor": "#0F73FF",
+        "sidebarBackground": "#030F38"
+      },
+      "layout": "split-screen",
+      "sidebar": {
+        "width": "320px",
+        "background": "#030F38",
+        "textColor": "white", 
+        "content": {
+          "logo": "WonderList",
+          "title": "Confident",
+          "subtitle": "Focused & Determined",
+          "description": "Build professional growth and life mastery",
+          "navigation": [
+            {
+              "label": "Back to Home",
+              "icon": "Home"
+            },
+            {
+              "label": "All Emotions",
+              "icon": "Grid3X3"
+            }
+          ]
+        }
+      },
+      "content": {
+        "framework": "spark-shape-start",
+        "modules": [
+          {
+            "phase": "spark",
+            "title": "Finance/FinanceSync",
+            "description": "Master your money",
+            "icon": "DollarSign", 
+            "color": "#0F73FF"
+          },
+          {
+            "phase": "shape",
+            "title": "Careers/Ascent",
+            "description": "Advance professionally",
+            "icon": "Briefcase",
+            "color": "#0F73FF"
+          },
+          {
+            "phase": "start",
+            "title": "Life Change/Transitions", 
+            "description": "Navigate major changes",
+            "icon": "ArrowRight",
+            "color": "#0F73FF"
+          }
+        ]
+      }
+    },
+    "christmas-spark": {
+      "type": "sub-module",
+      "parent": "excited",
+      "theme": {
+        "primaryColor": "#F05959",
+        "sidebarBackground": "#F05959"
+      },
+      "layout": "split-screen",
+      "sidebar": {
+        "width": "320px",
+        "background": "#F05959",
+        "textColor": "white",
+        "content": {
+          "logo": "Listmas",
+          "title": "Holiday Magic",
+          "subtitle": "Awaits Your Perfect Planning",
+          "stats": [
+            {
+              "label": "Days Until Christmas",
+              "value": "45",
+              "icon": "Clock"
+            },
+            {
+              "label": "Budget Used",
+              "value": "67%",
+              "icon": "DollarSign"
+            },
+            {
+              "label": "Gifts Planned", 
+              "value": "12",
+              "icon": "Gift"
+            }
+          ],
+          "navigation": [
+            {
+              "label": "Back to Feel Excited",
+              "icon": "ArrowLeft"
+            },
+            {
+              "label": "Back to Home",
+              "icon": "Home"
+            }
+          ]
+        }
+      },
+      "content": {
+        "header": {
+          "type": "framework-indicator",
+          "content": "Spark → Shape → Start",
+          "alignment": "right"
+        },
+        "main": {
+          "type": "three-card-grid",
+          "cards": [
+            {
+              "title": "Spark New Ideas",
+              "icon": "Lightbulb",
+              "background": "gradient-to-br from-red-100 to-red-200",
+              "actions": [
+                "Browse for new traditions",
+                "Get new craft-spiration", 
+                "Give me gift inspiration"
+              ],
+              "interactive": true,
+              "expandable": true
+            },
+            {
+              "title": "Shape Festive Plans",
+              "icon": "Calendar",
+              "background": "gradient-to-br from-green-100 to-green-200", 
+              "actions": [
+                "Schedule your to do list",
+                "Christmas food list",
+                "Generate your christmas gift list"
+              ],
+              "interactive": true,
+              "expandable": true
+            },
+            {
+              "title": "Start Christmas Shopping",
+              "icon": "ShoppingCart", 
+              "background": "gradient-to-br from-blue-100 to-blue-200",
+              "actions": [
+                "Start festive shopping",
+                "Festive budget", 
+                "Thank you notes"
+              ],
+              "interactive": true,
+              "expandable": true
+            }
+          ]
+        },
+        "planningSteps": {
+          "type": "interactive-widget",
+          "position": "floating-bottom-right",
+          "background": "#F05959",
+          "textColor": "white",
+          "features": {
+            "progressBars": 3,
+            "autoPlay": true,
+            "navigationBoxes": true,
+            "steps": [
+              "Spark ideas for festive fun",
+              "Shape your festive plans",
+              "Start - Shopping!"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "PlanningSteps": {
+      "type": "interactive-widget",
+      "props": [
+        "currentStep",
+        "totalSteps", 
+        "isAutoPlay",
+        "onToggleAutoPlay",
+        "onPrevious", 
+        "onNext",
+        "onStepClick"
+      ],
+      "features": {
+        "autoAdvance": {
+          "interval": 3000,
+          "pausable": true
+        },
+        "progressIndicators": {
+          "type": "bars",
+          "clickable": true,
+          "activeColor": "white",
+          "inactiveColor": "white/30"
+        },
+        "navigationBoxes": {
+          "showArrows": false,
+          "showText": true,
+          "dynamicText": [
+            "Spark ideas for festive fun",
+            "Shape your festive plans", 
+            "Start - Shopping!"
+          ]
+        }
+      },
+      "styling": {
+        "background": "#F05959",
+        "textColor": "white",
+        "borderRadius": "16px",
+        "padding": "24px 32px",
+        "shadow": "lg"
+      }
+    },
+    "HoverNavigation": {
+      "type": "expandable-sidebar",
+      "behavior": {
+        "trigger": "hover",
+        "expandDirection": "right",
+        "collapsedWidth": "80px",
+        "expandedWidth": "320px",
+        "animationDuration": "200ms"
+      },
+      "sections": [
+        "logo",
+        "main-navigation",
+        "emotions",
+        "recent-modules"
+      ]
+    },
+    "MobileNavigation": {
+      "type": "bottom-tab-bar",
+      "behavior": {
+        "fixed": true,
+        "background": "white",
+        "shadow": true,
+        "activeIndicator": "color-change"
+      }
+    },
+    "EmotionCard": {
+      "type": "interactive-card",
+      "behavior": {
+        "hover": "scale-and-shadow",
+        "click": "navigate",
+        "colorTheming": "dynamic"
+      },
+      "layout": {
+        "header": "icon-and-title",
+        "content": "description-and-modules",
+        "footer": "cta-button"
+      }
+    }
+  },
+  "interactions": {
+    "navigation": {
+      "type": "spa-routing",
+      "method": "state-based",
+      "lazyLoading": true,
+      "transitions": "fade"
+    },
+    "hover": {
+      "sidebar": "expand-on-hover",
+      "cards": "lift-and-highlight",
+      "buttons": "color-transition"
+    },
+    "click": {
+      "navigation": "immediate",
+      "cards": "expand-then-navigate",
+      "planningSteps": "update-progress"
+    },
+    "autoplay": {
+      "planningSteps": {
+        "duration": 3000,
+        "pauseOnHover": true,
+        "resumeOnLeave": true
+      }
+    }
+  },
+  "responsiveBreakpoints": {
+    "mobile": {
+      "maxWidth": "767px",
+      "layout": "single-column",
+      "navigation": "bottom-tabs",
+      "sidebar": "hidden",
+      "padding": "16px"
+    },
+    "tablet": {
+      "minWidth": "768px",
+      "maxWidth": "1023px", 
+      "layout": "split-screen-collapsed",
+      "navigation": "hover-sidebar",
+      "sidebar": "auto-collapse"
+    },
+    "desktop": {
+      "minWidth": "1024px",
+      "layout": "split-screen-full",
+      "navigation": "hover-sidebar",
+      "sidebar": "expandable",
+      "padding": "32px"
+    }
+  },
+  "stateManagement": {
+    "routing": {
+      "currentPage": "string",
+      "defaultPage": "home"
+    },
+    "recentModules": {
+      "type": "array",
+      "maxItems": 3,
+      "persistence": "localStorage"
+    },
+    "planningSteps": {
+      "currentStep": "number",
+      "isAutoPlay": "boolean",
+      "totalSteps": 3
+    }
+  },
+  "accessibility": {
+    "keyboard": {
+      "navigation": "tab-order",
+      "shortcuts": "arrow-keys"
+    },
+    "screenReader": {
+      "labels": "comprehensive",
+      "landmarks": "semantic-html"
+    },
+    "contrast": {
+      "ratio": "WCAG-AA",
+      "darkMode": "supported"
+    }
+  },
+  "performance": {
+    "lazyLoading": {
+      "pages": "react-lazy",
+      "images": "intersection-observer"
+    },
+    "bundling": {
+      "codesplitting": "page-level",
+      "treeshaking": true
+    }
+  },
+  "technicalRequirements": {
+    "framework": "React 18+",
+    "typescript": true,
+    "styling": "Tailwind CSS v4",
+    "icons": "lucide-react",
+    "fonts": {
+      "primary": "Poppins (Google Fonts)",
+      "decorative": ["Kalam", "Caveat", "Dancing Script"]
+    },
+    "dependencies": [
+      "react",
+      "react-dom", 
+      "lucide-react",
+      "tailwindcss"
+    ]
+  }
+}
